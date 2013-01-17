@@ -19,5 +19,10 @@ public class Class2 {
 	{
 		System.out.println("Hello from Class2!!");
 	}
+	
+	public void anotherMessageFromClass2()
+	{
+		System.out.println("Another hello from Class2!!");
+	}	
 
 }

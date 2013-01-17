@@ -26,7 +26,8 @@ public class Hello {
 		
 		class2.messageFromClass2();
 		class2_instans2.messageFromClass2();
+		class2_instans2.anotherMessageFromClass2();
 
-	}
+	};
 
 }
