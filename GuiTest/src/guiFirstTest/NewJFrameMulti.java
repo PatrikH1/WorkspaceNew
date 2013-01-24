@@ -236,7 +236,8 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 					   NewJFrameTestMultiRandom instRandom; 
 					   if (randomChosen) {
 						   instRandom = new NewJFrameTestMultiRandom();
-						   instRandom.setLocation(750, 100);
+						   //instRandom.setLocation(750, 100);
+						   instRandom.setLocation(600, 100);
 						   instRandom.setVisible(true);						   
 					   }
 					   else {

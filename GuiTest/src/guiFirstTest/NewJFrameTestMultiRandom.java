@@ -221,7 +221,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int deltaY1 = 33;		
 			
 			// First column
-			int max = 5;
+			int max = 10;
 			int i = 0;
 			for (i = 0; i < max; i++) {
 				if (i > 0) {
@@ -297,7 +297,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonCheck = new JButton();
 				getContentPane().add(jButtonCheck);
 				jButtonCheck.setText("Check");
-				jButtonCheck.setBounds(64, 206, 81, 26);
+				//jButtonCheck.setBounds(64, 206, 81, 26);
+				jButtonCheck.setBounds(64, 400, 81, 26);
 				jButtonCheck.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonCheckActionPerformed(evt);
@@ -310,7 +311,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonReset = new JButton();
 				getContentPane().add(jButtonReset);
 				jButtonReset.setText("Reset");
-				jButtonReset.setBounds(175, 206, 81, 26);
+				//jButtonReset.setBounds(175, 206, 81, 26);
+				jButtonReset.setBounds(175, 400, 81, 26);
 				jButtonReset.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonResetActionPerformed(evt);
@@ -319,7 +321,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			}
 
 			pack();
-			this.setSize(345, 291);
+			//this.setSize(345, 291);
+			this.setSize(600, 580);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
