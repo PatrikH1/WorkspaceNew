@@ -199,93 +199,87 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			getContentPane().setLayout(null);
 			
 			RandomNumbers generator = new RandomNumbers();
+
+			// Init of all values the first time.
+			//-----------------------------------
+			// Start values
+			int startLabelY1 = 32;
+			int startTextFieldY1 = 29;
+			int startResultY1 = 34;
 			
 			// JLabel coordinates
 			int labelX1 = 33;
-			int labelY1 = 32;
+			int labelY1 = startLabelY1;
 			int labelX2 = 49;
 			int labelY2 = 16;
 			
 			// JTextField coordinates
 			int textFieldX1 = 76;
-			int textFieldY1 = 29;
+			int textFieldY1 = startTextFieldY1;
 			int textFieldX2 = 62;
 			int textFieldY2 = 22;	
 			
 			// jLabelResult
 			int resultX1 = 142;
-			int resultY1 = 34;
+			int resultY1 = startResultY1;
 			int resultX2 = 31;
 			int resultY2 = 10;			
 			
-			int deltaY1 = 33;		
+			// Delta
+			int deltaY1 = 33;
+			int deltaX1 = 146;
 			
-			// First column
-			int max = 10;
-			int i = 0;
-			for (i = 0; i < max; i++) {
-				if (i > 0) {
-					labelY1 += deltaY1;
-					textFieldY1 += deltaY1;
-					resultY1+= deltaY1;					
+			// Number of rows and columns.
+			int numOfRows = 10;
+			int numOfColumns = 4;			
+			
+			// Loop to create all columns and rows.
+			// *******************************************
+			
+			// The columns are created,
+			for (int j = 0; j < numOfColumns; j++) {
+				
+				// The rows are created.
+				for (int i = 0; i < numOfRows; i++) {
+					if (i > 0) {
+						labelY1 += deltaY1;
+						textFieldY1 += deltaY1;
+						resultY1+= deltaY1;					
+					}
+					int num1 = generator.getNextRandomInt();
+					int num2 = generator.getNextRandomInt();
+					int tmpLabelX1 = labelX1;
+					int tmpLabelX2 = labelX2;				
+					if (num1 > 9)
+					{
+						tmpLabelX1 = tmpLabelX1 - 6;
+					}
+					if (num2 > 9)
+					{
+						tmpLabelX1 = tmpLabelX1 - 6;
+						tmpLabelX2 = tmpLabelX2 + 11;
+					}				
+					multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
+							new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
+							new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
+							new Coordinates(resultX1, resultY1, resultX2, resultY2)));
 				}
-				int num1 = generator.getNextRandomInt();
-				int num2 = generator.getNextRandomInt();
-				int tmpLabelX1 = labelX1;
-				int tmpLabelX2 = labelX2;				
-				if (num1 > 9)
-				{
-					tmpLabelX1 = tmpLabelX1 - 6;
-				}
-				if (num2 > 9)
-				{
-					tmpLabelX1 = tmpLabelX1 - 6;
-					tmpLabelX2 = tmpLabelX2 + 11;
-				}				
-				multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
-						new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
-						new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
-						new Coordinates(resultX1, resultY1, resultX2, resultY2)));
-			}	
-			
-			// JLabel coordinates
-			labelX1 = 179;
-			labelY1 = 32;
-			
-			// JTextField coordinates
-			textFieldX1 = 222;
-			textFieldY1 = 29;
-			
-			// jLabelResult
-			resultX1 = 288;
-			resultY1 = 34;
-			
-			// Second column
-			for (i = 0; i < max; i++) {
-				if (i > 0) {
-					labelY1 += deltaY1;
-					textFieldY1 += deltaY1;
-					resultY1+= deltaY1;					
-				}
-				int num1 = generator.getNextRandomInt();
-				int num2 = generator.getNextRandomInt();
-				int tmpLabelX1 = labelX1;
-				int tmpLabelX2 = labelX2;				
-				if (num1 > 9)
-				{
-					tmpLabelX1 = tmpLabelX1 - 6;
-				}
-				if (num2 > 9)
-				{
-					tmpLabelX1 = tmpLabelX1 - 6;
-					tmpLabelX2 = tmpLabelX2 + 11;
-				}				
-				multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
-						new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
-						new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
-						new Coordinates(resultX1, resultY1, resultX2, resultY2)));
-			}			
 
+				// Init all values
+				// ---------------
+				// JLabel coordinates				
+				labelX1 += deltaX1;
+				labelY1 = startLabelY1;
+				
+				// JTextField coordinates
+				textFieldX1 += deltaX1;
+				textFieldY1 = startTextFieldY1;
+				
+				// jLabelResult
+				resultX1 += deltaX1;
+				resultY1 = startResultY1;							
+			}
+				
 			// All labels and text fields are created.
 			Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
 			while (iter.hasNext()) {
@@ -322,7 +316,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 
 			pack();
 			//this.setSize(345, 291);
-			this.setSize(600, 580);
+			this.setSize(650, 580);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
