@@ -19,7 +19,7 @@ public class RandomNumbers {
 	 *  Constructor for class RandomNumbers.
 	 */
 	public RandomNumbers() {
-		maxNumber = 10;
+		maxNumber = 20;
 		generator = new Random();
 	}
 
@@ -51,11 +51,11 @@ public class RandomNumbers {
 	public static void main(String[] args) {
 		RandomNumbers generator = new RandomNumbers();
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			System.out.print(generator.getNextRandomInt() + " ");
 		}
 		System.out.println();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 30; i++) {
 			System.out.print(generator.getNextRandomInt() + " ");
 		}
 		System.out.println();

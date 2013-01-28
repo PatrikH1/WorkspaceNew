@@ -291,8 +291,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonCheck = new JButton();
 				getContentPane().add(jButtonCheck);
 				jButtonCheck.setText("Check");
-				//jButtonCheck.setBounds(64, 206, 81, 26);
-				jButtonCheck.setBounds(64, 400, 81, 26);
+				jButtonCheck.setBounds(184, 400, 81, 26);
 				jButtonCheck.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonCheckActionPerformed(evt);
@@ -305,8 +304,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonReset = new JButton();
 				getContentPane().add(jButtonReset);
 				jButtonReset.setText("Reset");
-				//jButtonReset.setBounds(175, 206, 81, 26);
-				jButtonReset.setBounds(175, 400, 81, 26);
+				jButtonReset.setBounds(295, 400, 81, 26);
 				jButtonReset.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonResetActionPerformed(evt);
