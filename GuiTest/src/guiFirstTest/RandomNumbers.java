@@ -19,7 +19,7 @@ public class RandomNumbers {
 	 *  Constructor for class RandomNumbers.
 	 */
 	public RandomNumbers() {
-		maxNumber = 20;
+		maxNumber = 10;
 		generator = new Random();
 	}
 

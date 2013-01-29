@@ -101,6 +101,7 @@ public class NewJFrameTestMulti extends javax.swing.JFrame {
 				getContentPane().add(jLabel1);
 				jLabel1.setText("1 x " + multiTable + " = ");
 				jLabel1.setBounds(33, 32, 49, 16);
+				jLabel1.setForeground(new java.awt.Color(255,0,0));
 			}
 			{
 				jTextField1 = new JTextField();
@@ -122,6 +123,7 @@ public class NewJFrameTestMulti extends javax.swing.JFrame {
 				getContentPane().add(jLabel2);
 				jLabel2.setText("2 x " + multiTable + " = ");
 				jLabel2.setBounds(33, 65, 49, 16);
+				jLabel2.setForeground(new java.awt.Color(28,210,23));
 			}
 			{
 				jTextField2 = new JTextField();
