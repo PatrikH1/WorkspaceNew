@@ -83,6 +83,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		private JLabel jLabel;
 		private JTextField jTextField;
 		private JLabel jLabelResult;	
+		private JLabel jLabelOkError;
 		
 		// Coordinates
 		private Coordinates coordJLabel;

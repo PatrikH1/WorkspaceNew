@@ -48,9 +48,17 @@ public class NewJFrameOkError extends javax.swing.JFrame {
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
 				//getContentPane().add(jLabel1, BorderLayout.EAST);
-				jLabel1.setText("OK");
-				jLabel1.setBounds(108, 89, 155, 92);
-				jLabel1.setFont(new java.awt.Font("Arial Black",0,48));
+				
+				// Error
+				jLabel1.setForeground(new java.awt.Color(255,0,0));							
+				jLabel1.setText("Error");
+				
+				// OK
+				//jLabel1.setForeground(new java.awt.Color(28,210,23));
+				//jLabel1.setText("OK");
+				
+				jLabel1.setBounds(108, 89, 121, 92);
+				jLabel1.setFont(new java.awt.Font("Times New Roman",0,48));
 				//jLabel1.setBounds(133, 103, 50, 37);
 				//jLabel1.setBounds(106, 57, 100, 94);
 			}
