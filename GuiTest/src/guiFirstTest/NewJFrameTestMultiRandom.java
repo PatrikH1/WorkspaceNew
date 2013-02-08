@@ -19,10 +19,22 @@ import guiFirstTest.RandomNumbers;
 */
 public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private int multiTable;
-	private Vector<MultiLabelTextField> multiTextsAndFileldsVec;
+	
+	// Indicates if an error has been found or not.
+	private boolean errorFound;
+	
+    //  Vector containing name and inputfield of all numbers to calculate.
+	private Vector<MultiLabelTextField> multiTextsAndFileldsVec;  
+	
+	// Buttons
+	private JButton jButtonReset;
+	private JButton jButtonCheck;	
+	
+	// JLabel to hold OK or Error
+	private JLabel jLabelOkOrError;
 
 	/**
-	 *  Class to hold coordinates.
+	 *  Internal class to hold coordinates.
 	 */
 	public class Coordinates {
 		private int x1;
@@ -68,10 +80,10 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		public void setY2(int y2) {
 			this.y2 = y2;
 		}
-	}
+	}  // End internal class Coordinates.
 	
 	/**
-	 *  Class to hold two jLabel and one jTextField and also coordinates for the labels and
+	 *  Internal class to hold two jLabel and one jTextField and also coordinates for the labels and
 	 *  the fields.
 	 */
 	public class MultiLabelTextField {
@@ -82,8 +94,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		// Labels and textfields
 		private JLabel jLabel;
 		private JTextField jTextField;
-		private JLabel jLabelResult;	
-		private JLabel jLabelOkError;
+		private JLabel jLabelResult;
 		
 		// Coordinates
 		private Coordinates coordJLabel;
@@ -148,11 +159,9 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jLabelResult.setFont(new java.awt.Font("Times New Roman",0,12));
 			}			
 		}		
-	}
-		
-	// Buttons
-	private JButton jButtonReset;
-	private JButton jButtonCheck;	
+	}  // End of internal class MultiLabelTextField
+	
+	
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -312,7 +321,14 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 					}
 				});
 			}
-
+			
+			// The jLabel holding the OK and Error text.
+			jLabelOkOrError = new JLabel();
+			getContentPane().add(jLabelOkOrError);
+			jLabelOkOrError.setText("");
+			jLabelOkOrError.setBounds(450, 365, 121, 92);
+			jLabelOkOrError.setFont(new java.awt.Font("Times New Roman",0,48));
+			
 			pack();
 			//this.setSize(345, 291);
 			this.setSize(650, 580);
@@ -329,11 +345,24 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	{
 		// The values in all fields are checked by this iterator for the vector.
 		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
+		errorFound = false;  // Reset the errorFound variable, no errors found before checking is started.
 		while (iter.hasNext()) {
 			MultiLabelTextField currField = ((MultiLabelTextField) iter.next());
 			printOKorError(currField.getjLabelResult(), currField.getjTextField(), 
 					currField.getNum1(), currField.getNum2());
-		}					
+		}	
+		if (errorFound == true)
+		{
+			// Error
+			jLabelOkOrError.setForeground(new java.awt.Color(255,0,0));	
+			jLabelOkOrError.setText("Error");			
+		}
+		else
+		{
+			// OK
+			jLabelOkOrError.setForeground(new java.awt.Color(28,210,23));
+			jLabelOkOrError.setText("OK");
+		}
 	}
 	
 	/**
@@ -347,7 +376,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			MultiLabelTextField currField = ((MultiLabelTextField) iter.next());
 			currField.getjTextField().setText("");
 			currField.getjLabelResult().setText("");
-		}										
+		}		
+		jLabelOkOrError.setText("");
 	}
 	
 	/**
@@ -367,12 +397,14 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		   {	
 			   jLabel.setForeground(new java.awt.Color(255,0,0));
 			   jLabel.setText("Error");		
+			   errorFound = true;
 		   }		
 		}
 		catch (NumberFormatException ex)
 		{
 			jLabel.setForeground(new java.awt.Color(255,0,0));			
-			jLabel.setText("Error");	
+			jLabel.setText("Error");
+			errorFound = true;
 		}		
 	}
 }
