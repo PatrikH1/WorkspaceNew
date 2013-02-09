@@ -29,6 +29,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	// Buttons
 	private JButton jButtonReset;
 	private JButton jButtonCheck;	
+	private JButton jButtonNewNumbers;
 	
 	// JLabel to hold OK or Error
 	private JLabel jLabelOkOrError;
@@ -159,6 +160,19 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jLabelResult.setFont(new java.awt.Font("Times New Roman",0,12));
 			}			
 		}		
+		
+		/**
+		 *  New numbers are generated..
+		 */		
+		public void genNewNumber(int num1, int num2)
+		{
+			this.num1 = num1;
+			this.num2 = num2;
+
+			jLabel.setText(num1 + " x " + num2 + " = ");						
+		}
+		
+		
 	}  // End of internal class MultiLabelTextField
 	
 	
@@ -301,7 +315,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonCheck = new JButton();
 				getContentPane().add(jButtonCheck);
 				jButtonCheck.setText("Check");
-				jButtonCheck.setBounds(184, 400, 81, 26);
+				jButtonCheck.setBounds(60, 400, 120, 26);
 				jButtonCheck.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonCheckActionPerformed(evt);
@@ -314,7 +328,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				jButtonReset = new JButton();
 				getContentPane().add(jButtonReset);
 				jButtonReset.setText("Reset");
-				jButtonReset.setBounds(295, 400, 81, 26);
+				 jButtonReset.setBounds(190, 400, 120, 26);
 				jButtonReset.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						jButtonResetActionPerformed(evt);
@@ -322,11 +336,24 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				});
 			}
 			
+			// The New Numbers button is added.
+			{
+				jButtonNewNumbers = new JButton();
+				getContentPane().add(jButtonNewNumbers);
+				jButtonNewNumbers.setText("New Numbers");
+				jButtonNewNumbers.setBounds(320, 400, 120, 26);
+				jButtonNewNumbers.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jButtonNewNumbersActionPerformed(evt);
+					}
+				});
+			}			
+			
 			// The jLabel holding the OK and Error text.
 			jLabelOkOrError = new JLabel();
 			getContentPane().add(jLabelOkOrError);
 			jLabelOkOrError.setText("");
-			jLabelOkOrError.setBounds(450, 365, 121, 92);
+			jLabelOkOrError.setBounds(470, 365, 121, 92);
 			jLabelOkOrError.setFont(new java.awt.Font("Times New Roman",0,48));
 			
 			pack();
@@ -370,6 +397,28 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	*/	
 	private void jButtonResetActionPerformed(ActionEvent evt) 
 	{
+		resetAllValues();
+	}
+	
+	/**
+	* Action method called when NewNumbers button is pushed.
+	*/	
+	private void jButtonNewNumbersActionPerformed(ActionEvent evt) 
+	{
+		resetAllValues();
+		RandomNumbers generator = new RandomNumbers();
+		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
+		while (iter.hasNext()) {
+			((MultiLabelTextField) iter.next()).genNewNumber(
+					generator.getNextRandomInt(), generator.getNextRandomInt());
+		}					
+	}
+	
+	/**
+	* Method to reset all values.
+	*/	
+	private void resetAllValues() 
+	{
 		// The values in all fields are checked by this iterator for the vector.
 		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
 		while (iter.hasNext()) {
@@ -378,7 +427,9 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			currField.getjLabelResult().setText("");
 		}		
 		jLabelOkOrError.setText("");
-	}
+	}	
+	
+	
 	
 	/**
 	* Action method called when reset button is pushed. Resets all fields.
