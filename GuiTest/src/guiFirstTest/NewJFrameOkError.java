@@ -2,6 +2,7 @@ package guiFirstTest;
 import com.cloudgarden.layout.AnchorLayout;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -21,6 +22,7 @@ import javax.swing.SwingUtilities;
 */
 public class NewJFrameOkError extends javax.swing.JFrame {
 	private JLabel jLabel1;
+	private JLabel jLabel2;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -45,22 +47,33 @@ public class NewJFrameOkError extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 			{
-				jLabel1 = new JLabel();
+				jLabel1 = new JLabel("", JLabel.RIGHT);
 				getContentPane().add(jLabel1);
 				//getContentPane().add(jLabel1, BorderLayout.EAST);
 				
 				// Error
-				jLabel1.setForeground(new java.awt.Color(255,0,0));							
-				jLabel1.setText("Error");
+				jLabel1.setForeground(new java.awt.Color(255,0,0));	
+				jLabel1.setHorizontalTextPosition(JLabel.RIGHT);
+				jLabel1.setText("OK");
 				
 				// OK
 				//jLabel1.setForeground(new java.awt.Color(28,210,23));
 				//jLabel1.setText("OK");
 				
-				jLabel1.setBounds(108, 89, 121, 92);
+				jLabel1.setBounds(160, 89, 121, 92);
 				jLabel1.setFont(new java.awt.Font("Times New Roman",0,48));
 				//jLabel1.setBounds(133, 103, 50, 37);
 				//jLabel1.setBounds(106, 57, 100, 94);
+			}
+			{
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setHorizontalTextPosition(JLabel.LEFT);
+				jLabel2.setAlignmentY(JLabel.RIGHT_ALIGNMENT);				
+				jLabel2.setText("Error");
+				jLabel2.setFont(new java.awt.Font("Times New Roman",0,48));
+				jLabel2.setForeground(new java.awt.Color(255,0,0));
+				jLabel2.setBounds(40, 89, 121, 93);
 			}
 			pack();
 			this.setSize(345, 300);
