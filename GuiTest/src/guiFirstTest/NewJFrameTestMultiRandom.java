@@ -128,7 +128,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 				Coordinates coordJLabelResult) {
 			this.num1 = num1;
 			this.num2 = num2;
-			this.jLabel = new JLabel();
+			this.jLabel = new JLabel("", JLabel.RIGHT);
 			this.jTextField = new JTextField();
 			this.jLabelResult = new JLabel();
 			this.coordJLabel = coordJLabel;
@@ -232,9 +232,11 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int startResultY1 = 34;
 			
 			// JLabel coordinates
-			int labelX1 = 33;
+			//int labelX1 = 33;
+			int labelX1 = 22;
 			int labelY1 = startLabelY1;
-			int labelX2 = 49;
+			//int labelX2 = 49;
+			int labelX2 = 55;
 			int labelY2 = 16;
 			
 			// JTextField coordinates
@@ -284,7 +286,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 						tmpLabelX2 = tmpLabelX2 + 11;
 					}				
 					multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
-							new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
+							//new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
+							new Coordinates(labelX1, labelY1, labelX2, labelY2),
 							new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
 							new Coordinates(resultX1, resultY1, resultX2, resultY2)));
 				}
