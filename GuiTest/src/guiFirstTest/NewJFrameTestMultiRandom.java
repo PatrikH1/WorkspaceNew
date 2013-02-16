@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JFrame;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -12,12 +13,14 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import guiFirstTest.RandomNumbers;
+import guiFirstTest.Coordinates;
+import guiFirstTest.MultiLabelTextField;
 
 /**
 *  This class displays a window where you can write answers to the multiplication table.
 *  One button checks your answers and another on resets all values.
 */
-public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
+public class NewJFrameTestMultiRandom extends JFrame {
 	private int multiTable;
 	
 	// Indicates if an error has been found or not.
@@ -33,150 +36,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	
 	// JLabel to hold OK or Error
 	private JLabel jLabelOkOrError;
-
-	/**
-	 *  Internal class to hold coordinates.
-	 */
-	public class Coordinates {
-		private int x1;
-		private int y1;
-		private int x2;
-		private int y2;
 		
-		public Coordinates(int x1, int y1, int x2, int y2) {
-			this.x1 = x1;
-			this.y1 = y1;
-			this.x2 = x2;
-			this.y2 = y2;
-		}
-
-		public int getX1() {
-			return x1;
-		}
-
-		public void setX1(int x1) {
-			this.x1 = x1;
-		}
-
-		public int getY1() {
-			return y1;
-		}
-
-		public void setY1(int y1) {
-			this.y1 = y1;
-		}
-
-		public int getX2() {
-			return x2;
-		}
-
-		public void setX2(int x2) {
-			this.x2 = x2;
-		}
-
-		public int getY2() {
-			return y2;
-		}
-
-		public void setY2(int y2) {
-			this.y2 = y2;
-		}
-	}  // End internal class Coordinates.
-	
-	/**
-	 *  Internal class to hold two jLabel and one jTextField and also coordinates for the labels and
-	 *  the fields.
-	 */
-	public class MultiLabelTextField {
-        // The multi number
-		private int num1;
-		private int num2;
-		
-		// Labels and textfields
-		private JLabel jLabel;
-		private JTextField jTextField;
-		private JLabel jLabelResult;
-		
-		// Coordinates
-		private Coordinates coordJLabel;
-		private Coordinates coordJTextField;
-		private Coordinates coordJLabelResult;		
-		
-		// Getters
-		public int getNum1() {
-			return num1;
-		}
-		
-		public int getNum2() {
-			return num2;
-		}		
-
-		public JTextField getjTextField() {
-			return jTextField;
-		}
-
-		public JLabel getjLabelResult() {
-			return jLabelResult;
-		}		
-		
-		/**
-		 *  Constructor for multiLabelTextField.
-		 */		
-		public MultiLabelTextField(int num1, int num2,
-				Coordinates coordJLabel, 
-				Coordinates coordJTextField, 
-				Coordinates coordJLabelResult) {
-			this.num1 = num1;
-			this.num2 = num2;
-			this.jLabel = new JLabel("", JLabel.RIGHT);
-			this.jTextField = new JTextField();
-			this.jLabelResult = new JLabel();
-			this.coordJLabel = coordJLabel;
-			this.coordJTextField = coordJTextField;
-			this.coordJLabelResult = coordJLabelResult;
-		} 	
-		
-		/**
-		 *  Creates Label and textfields.
-		 */			
-		public void createLabelAndFields() {
-			{
-				getContentPane().add(jLabel);
-				jLabel.setText(num1 + " x " + num2 + " = ");
-				jLabel.setBounds(coordJLabel.getX1(), coordJLabel.getY1(), 
-						coordJLabel.getX2(), coordJLabel.getY2());
-			}
-			{
-				getContentPane().add(jTextField);
-				jTextField.setText("");
-				jTextField.setBounds(coordJTextField.getX1(), coordJTextField.getY1(), 
-						coordJTextField.getX2(), coordJTextField.getY2());
-			}		
-			{
-				getContentPane().add(jLabelResult);
-				jLabelResult.setBounds(coordJLabelResult.getX1(), coordJLabelResult.getY1(), 
-						coordJLabelResult.getX2(), coordJLabelResult.getY2());
-				jLabelResult.setText("");
-				jLabelResult.setFont(new java.awt.Font("Times New Roman",0,12));
-			}			
-		}		
-		
-		/**
-		 *  New numbers are generated..
-		 */		
-		public void genNewNumber(int num1, int num2)
-		{
-			this.num1 = num1;
-			this.num2 = num2;
-
-			jLabel.setText(num1 + " x " + num2 + " = ");						
-		}
-		
-		
-	}  // End of internal class MultiLabelTextField
-	
-	
-
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
@@ -232,10 +92,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int startResultY1 = 34;
 			
 			// JLabel coordinates
-			//int labelX1 = 33;
 			int labelX1 = 22;
 			int labelY1 = startLabelY1;
-			//int labelX2 = 49;
 			int labelX2 = 55;
 			int labelY2 = 16;
 			
@@ -272,21 +130,12 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 						textFieldY1 += deltaY1;
 						resultY1+= deltaY1;					
 					}
+					
+					// Generate the random numbers.
 					int num1 = generator.getNextRandomInt();
 					int num2 = generator.getNextRandomInt();
-					int tmpLabelX1 = labelX1;
-					int tmpLabelX2 = labelX2;				
-					if (num1 > 9)
-					{
-						tmpLabelX1 = tmpLabelX1 - 6;
-					}
-					if (num2 > 9)
-					{
-						tmpLabelX1 = tmpLabelX1 - 6;
-						tmpLabelX2 = tmpLabelX2 + 11;
-					}				
+
 					multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
-							//new Coordinates(tmpLabelX1, labelY1, tmpLabelX2, labelY2), 
 							new Coordinates(labelX1, labelY1, labelX2, labelY2),
 							new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
 							new Coordinates(resultX1, resultY1, resultX2, resultY2)));
@@ -310,7 +159,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			// All labels and text fields are created.
 			Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
 			while (iter.hasNext()) {
-				((MultiLabelTextField) iter.next()).createLabelAndFields();
+				((MultiLabelTextField) iter.next()).createLabelAndFields(this);
 			}			
 			
 			// The check button is created.
@@ -360,9 +209,10 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			jLabelOkOrError.setFont(new java.awt.Font("Times New Roman",0,48));
 			
 			pack();
-			//this.setSize(345, 291);
 			this.setSize(650, 580);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 		    //add your error handling code here
 			e.printStackTrace();
 		}
