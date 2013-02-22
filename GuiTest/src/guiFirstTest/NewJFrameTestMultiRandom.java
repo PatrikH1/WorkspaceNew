@@ -61,11 +61,10 @@ public class NewJFrameTestMultiRandom extends JFrame {
 	}
 	
 	/**
-	* Constructor that gives you the multiplication table that is given as inparameter.
-	* 
-	* Inparameter multiTable int gives you the multiplication table that should be calculated.
-	*   
-	*/	
+	 * Constructor that gives you the multiplication table that is given as inparameter.
+	 * 
+	 * @param multiTable int gives you the multiplication table that should be calculated.
+	 */
 	public NewJFrameTestMultiRandom(int multiTable) {
 		super();
 		this.multiTable = multiTable;
