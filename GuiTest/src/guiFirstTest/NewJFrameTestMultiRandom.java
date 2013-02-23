@@ -1,8 +1,11 @@
 package guiFirstTest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 
@@ -20,7 +23,7 @@ import guiFirstTest.MultiLabelTextField;
 *  This class displays a window where you can write answers to the multiplication table.
 *  One button checks your answers and another on resets all values.
 */
-public class NewJFrameTestMultiRandom extends JFrame {
+public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private int multiTable;
 	
 	// Indicates if an error has been found or not.
@@ -33,6 +36,13 @@ public class NewJFrameTestMultiRandom extends JFrame {
 	private JButton jButtonReset;
 	private JButton jButtonCheck;	
 	private JButton jButtonNewNumbers;
+	
+	// Radio buttons.
+	private JRadioButton jRadioMultiButton;	
+	private JRadioButton jRadioDivButton;
+	
+	// Button Group
+	private ButtonGroup buttonGroupTable;	
 	
 	// JLabel to hold OK or Error
 	private JLabel jLabelOkOrError;
@@ -70,6 +80,13 @@ public class NewJFrameTestMultiRandom extends JFrame {
 		this.multiTable = multiTable;
 		this.multiTextsAndFileldsVec = new Vector<MultiLabelTextField>();
 		initGUI();
+	}	
+	
+	private ButtonGroup getButtonGroupTable() {
+		if (buttonGroupTable == null) {
+			buttonGroupTable = new ButtonGroup();
+		}
+		return buttonGroupTable;
 	}	
 
 	/**
@@ -198,7 +215,24 @@ public class NewJFrameTestMultiRandom extends JFrame {
 						jButtonNewNumbersActionPerformed(evt);
 					}
 				});
-			}			
+			}	
+			
+			// Radio button for multi.
+			jRadioMultiButton = new JRadioButton();
+			getContentPane().add(jRadioMultiButton);
+			jRadioMultiButton.setText("Multi");
+			jRadioMultiButton.setBounds(320, 430, 80, 26);
+			jRadioMultiButton.setSelected(true);	
+			
+			// Radio button for div.
+			jRadioDivButton = new JRadioButton();
+			getContentPane().add(jRadioDivButton);
+			jRadioDivButton.setText("Div");
+			jRadioDivButton.setBounds(320, 450, 80, 26);
+			
+			ButtonGroup buttonGroup = getButtonGroupTable();
+			buttonGroup.add(jRadioMultiButton);
+			buttonGroup.add(jRadioDivButton);			
 			
 			// The jLabel holding the OK and Error text.
 			jLabelOkOrError = new JLabel();
