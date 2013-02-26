@@ -297,7 +297,17 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		while (iter.hasNext()) {
 			((MultiLabelTextField) iter.next()).genNewNumber(
 					generator.getNextRandomInt(), generator.getNextRandomInt());
-		}					
+		}	
+		if (jRadioMultiButton.isSelected())
+		{
+			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
+			jLabelOkOrError.setText("Multi");
+		 }
+		else if (jRadioDivButton.isSelected())
+		{
+			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
+			jLabelOkOrError.setText("Div");			
+		}
 	}
 	
 	/**

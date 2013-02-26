@@ -57,7 +57,7 @@ public class NewJFrameOkError extends javax.swing.JFrame {
 				//getContentPane().add(jLabel1, BorderLayout.EAST);
 				
 				// Error
-				jLabel1.setForeground(new java.awt.Color(255,0,0));	
+				jLabel1.setForeground(new java.awt.Color(128,128,255));	
 				jLabel1.setHorizontalTextPosition(JLabel.RIGHT);
 				//jLabel1.setText("OK");
 				
