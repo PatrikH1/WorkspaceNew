@@ -294,20 +294,26 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		resetAllValues();
 		RandomNumbers generator = new RandomNumbers();
 		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
-		while (iter.hasNext()) {
-			((MultiLabelTextField) iter.next()).genNewNumber(
-					generator.getNextRandomInt(), generator.getNextRandomInt());
-		}	
+		int operator = MultiLabelTextField.MULTI;
+	
 		if (jRadioMultiButton.isSelected())
 		{
 			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
 			jLabelOkOrError.setText("Multi");
+		   operator = MultiLabelTextField.MULTI;
 		 }
 		else if (jRadioDivButton.isSelected())
 		{
 			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
-			jLabelOkOrError.setText("Div");			
-		}
+			jLabelOkOrError.setText("Div");	
+		   operator = MultiLabelTextField.DIV;
+		}		
+		
+		while (iter.hasNext()) {
+			((MultiLabelTextField) iter.next()).genNewNumber(
+					generator.getNextRandomInt(), generator.getNextRandomInt(), operator);
+		}	
+
 	}
 	
 	/**

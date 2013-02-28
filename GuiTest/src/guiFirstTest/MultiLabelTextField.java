@@ -9,6 +9,10 @@ import javax.swing.JFrame;
  *  the fields.
  */
 public class MultiLabelTextField {
+	// Constants
+	public static final int MULTI = 1;
+	public static final int DIV = 2;
+		
     // The multi number
 	private int num1;
 	private int num2;
@@ -87,12 +91,15 @@ public class MultiLabelTextField {
 	/**
 	 *  New numbers are generated..
 	 */		
-	public void genNewNumber(int num1, int num2)
-	{
+	public void genNewNumber(int num1, int num2, int operator) {
 		this.num1 = num1;
 		this.num2 = num2;
 
-		jLabel.setText(num1 + " x " + num2 + " = ");						
+		if (operator == MULTI) {
+			jLabel.setText(num1 + " x " + num2 + " = ");
+		} else if (operator == DIV) {
+			jLabel.setText(num1 + " / " + num2 + " = ");
+		}
 	}
 	
 	
