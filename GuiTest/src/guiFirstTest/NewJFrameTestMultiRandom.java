@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import guiFirstTest.RandomNumbers;
+import guiFirstTest.GenerateDivision;
 import guiFirstTest.Coordinates;
 import guiFirstTest.MultiLabelTextField;
 
@@ -25,6 +26,7 @@ import guiFirstTest.MultiLabelTextField;
 */
 public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private int multiTable;
+	private int operator;
 	
 	// Indicates if an error has been found or not.
 	private boolean errorFound;
@@ -67,6 +69,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		super();
 		this.multiTable = 5;
 		this.multiTextsAndFileldsVec = new Vector<MultiLabelTextField>();
+		this.operator = MultiLabelTextField.MULTI;
 		initGUI();
 	}
 	
@@ -79,6 +82,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		super();
 		this.multiTable = multiTable;
 		this.multiTextsAndFileldsVec = new Vector<MultiLabelTextField>();
+		this.operator = MultiLabelTextField.MULTI;
 		initGUI();
 	}	
 	
@@ -294,7 +298,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		resetAllValues();
 		RandomNumbers generator = new RandomNumbers();
 		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
-		int operator = MultiLabelTextField.MULTI;
+		GenerateDivision generateDivision = null;
 	
 		if (jRadioMultiButton.isSelected())
 		{
@@ -307,12 +311,24 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
 			jLabelOkOrError.setText("Div");	
 		   operator = MultiLabelTextField.DIV;
-		}		
+		   generateDivision = new GenerateDivision();
+		}	
 		
 		while (iter.hasNext()) {
-			((MultiLabelTextField) iter.next()).genNewNumber(
-					generator.getNextRandomInt(), generator.getNextRandomInt(), operator);
-		}	
+
+			if (operator == MultiLabelTextField.MULTI) {
+				((MultiLabelTextField) iter.next()).genNewNumber(
+						generator.getNextRandomInt(),
+						generator.getNextRandomInt(), operator);
+			} 
+			else if (operator == MultiLabelTextField.DIV) {
+				generateDivision.genNumeratorDenominator();
+				((MultiLabelTextField) iter.next()).genNewNumber(
+						generateDivision.getNumerator(),
+						generateDivision.getDenominator(), operator);
+
+			}
+		}
 
 	}
 	
@@ -330,18 +346,28 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		}		
 		jLabelOkOrError.setText("");
 	}	
-	
-	
-	
+		
 	/**
 	* Action method called when reset button is pushed. Resets all fields.
 	*/		
-	private void printOKorError(JLabel jLabel, JTextField jTextField, int num1, int num2)
+	private void printOKorError(JLabel jLabel, 
+			JTextField jTextField, 
+			int num1, 
+			int num2)
 	{
 		try
 		{		
 		   Integer tmpInteger = new Integer(jTextField.getText());
-		   if (tmpInteger == (num1 * num2))
+		   boolean calcOk = true;
+		   
+		   if (operator == MultiLabelTextField.MULTI) {
+			   calcOk = (tmpInteger == (num1 * num2));
+		   }
+		   else if (operator == MultiLabelTextField.DIV) {
+			   calcOk = (tmpInteger == (num1 / num2));
+		   }
+		   		   
+		   if (calcOk )
 		   {
 			   jLabel.setForeground(new java.awt.Color(28,210,23));
 			   jLabel.setText("OK");	
