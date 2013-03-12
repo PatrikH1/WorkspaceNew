@@ -1,4 +1,5 @@
 package guiFirstTest;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,7 @@ import javax.swing.SwingUtilities;
 import java.util.Iterator;
 import java.util.Vector;
 
+// Imports from this package.
 import guiFirstTest.RandomNumbers;
 import guiFirstTest.GenerateDivision;
 import guiFirstTest.Coordinates;
@@ -112,9 +114,9 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int startResultY1 = 34;
 			
 			// JLabel coordinates
-			int labelX1 = 22;
+			int labelX1 = 10;
 			int labelY1 = startLabelY1;
-			int labelX2 = 55;
+			int labelX2 = 66;
 			int labelY2 = 16;
 			
 			// JTextField coordinates
@@ -155,6 +157,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 					int num1 = generator.getNextRandomInt();
 					int num2 = generator.getNextRandomInt();
 
+					// The number, input field and the result label are created.
+					// The class MultiLabelTextField is used for that.
 					multiTextsAndFileldsVec.add(new MultiLabelTextField(num1, num2,
 							new Coordinates(labelX1, labelY1, labelX2, labelY2),
 							new Coordinates(textFieldX1, textFieldY1, textFieldX2, textFieldY2), 
@@ -234,11 +238,13 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			jRadioDivButton.setText("Div");
 			jRadioDivButton.setBounds(320, 450, 80, 26);
 			
+			// Button group for radio buttons for Multi and Div.
 			ButtonGroup buttonGroup = getButtonGroupTable();
 			buttonGroup.add(jRadioMultiButton);
 			buttonGroup.add(jRadioDivButton);			
 			
 			// The jLabel holding the OK and Error text.
+			// For the moment this label also holds the text Multi and Div.
 			jLabelOkOrError = new JLabel();
 			getContentPane().add(jLabelOkOrError);
 			jLabelOkOrError.setText("");
@@ -299,13 +305,15 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		RandomNumbers generator = new RandomNumbers();
 		Iterator<MultiLabelTextField> iter = multiTextsAndFileldsVec.iterator();
 		GenerateDivision generateDivision = null;
-	
+	    
+		// Multiplication used.
 		if (jRadioMultiButton.isSelected())
 		{
 			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
 			jLabelOkOrError.setText("Multi");
 		   operator = MultiLabelTextField.MULTI;
 		 }
+		// Division used.
 		else if (jRadioDivButton.isSelected())
 		{
 			jLabelOkOrError.setForeground(new java.awt.Color(128,128,255));
@@ -314,8 +322,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 		   generateDivision = new GenerateDivision();
 		}	
 		
+		// All the new numbers are generated,
 		while (iter.hasNext()) {
-
 			if (operator == MultiLabelTextField.MULTI) {
 				((MultiLabelTextField) iter.next()).genNewNumber(
 						generator.getNextRandomInt(),
@@ -329,7 +337,6 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 
 			}
 		}
-
 	}
 	
 	/**
