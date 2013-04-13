@@ -10,30 +10,45 @@ import javax.swing.Timer;
 public class TimerExample extends JFrame {
 
    final JLabel label;
-   Timer countdownTimer;
+   // Timer countdownTimer;
+   Timer countUpTimer;
    int timeRemaining = 10;
+   int timeCountsUp = 0;
+   int timeStop = 10;
 
    public TimerExample() {
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       setSize(200, 200);
-      label = new JLabel(String.valueOf(timeRemaining), JLabel.CENTER);
+      label = new JLabel(String.valueOf(timeCountsUp), JLabel.CENTER);
       getContentPane().add(label);
 
-      countdownTimer = new Timer(1000, new CountdownTimerListener());
+      countUpTimer = new Timer(1000, new CountUpTimerListener());
       setVisible(true);
-      countdownTimer.start();
+      countUpTimer.start();
    }
 
-   class CountdownTimerListener implements ActionListener {
+   class CountUpTimerListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         if (--timeRemaining > 0) {
-            label.setText(String.valueOf(timeRemaining));
+         if (timeCountsUp <= timeStop) {
+            label.setText(String.valueOf(timeCountsUp));
+            timeCountsUp++;
          } else {
-            label.setText("Time's up!");
-            countdownTimer.stop();
+            // label.setText("Time's up!");
+            countUpTimer.stop();
          }
       }
    }
+   
+   class CountdownTimerListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+	         if (--timeRemaining > 0) {
+	            label.setText(String.valueOf(timeRemaining));
+	         } else {
+	            label.setText("Time's up!");
+	            countUpTimer.stop();
+	         }
+	      }
+	   }   
 
    public static void main(String[] args) {
       EventQueue.invokeLater(new Runnable() {
