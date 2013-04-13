@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import javax.swing.JButton;
 
 public class TimerExample extends JFrame {
 
@@ -15,6 +16,10 @@ public class TimerExample extends JFrame {
    int timeRemaining = 10;
    int timeCountsUp = 0;
    int timeStop = 10;
+   boolean started = true;
+   
+	// Buttons
+	private JButton jButtonStop;
 
    public TimerExample() {
       setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -22,6 +27,12 @@ public class TimerExample extends JFrame {
       label = new JLabel(String.valueOf(timeCountsUp), JLabel.CENTER);
       getContentPane().add(label);
 
+      jButtonStop = new JButton();
+	  getContentPane().add(jButtonStop);
+	  //jButtonStop.setText("Stop");
+	  jButtonStop.setBounds(50, 50, 120, 26);
+	  jButtonStop.addActionListener(new stopStartListener());  
+	
       countUpTimer = new Timer(1000, new CountUpTimerListener());
       setVisible(true);
       countUpTimer.start();
@@ -29,14 +40,9 @@ public class TimerExample extends JFrame {
 
    class CountUpTimerListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         if (timeCountsUp <= timeStop) {
-            label.setText(String.valueOf(timeCountsUp));
+            jButtonStop.setText(String.valueOf(timeCountsUp));
             timeCountsUp++;
-         } else {
-            // label.setText("Time's up!");
-            countUpTimer.stop();
          }
-      }
    }
    
    class CountdownTimerListener implements ActionListener {
@@ -49,6 +55,19 @@ public class TimerExample extends JFrame {
 	         }
 	      }
 	   }   
+   
+      class stopStartListener implements ActionListener {
+	      public void actionPerformed(ActionEvent e) {
+             if (started) {
+	            countUpTimer.stop();	
+	            started = false;
+             }
+             else {
+ 	            countUpTimer.start();	
+ 	            started = true;
+             }          	 
+	      }
+	   }      
 
    public static void main(String[] args) {
       EventQueue.invokeLater(new Runnable() {
