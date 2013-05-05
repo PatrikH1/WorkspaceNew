@@ -1,9 +1,12 @@
 package guiFirstTest;
+import guiFirstTest.TimerExample.CountUpTimerListener;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -28,6 +31,11 @@ public class TestTimerExample extends javax.swing.JFrame {
 	private JLabel jLabelSeconds;
 	private JLabel jLabelMinutes;
 	private JLabel jLabelMinuteDigits;
+	
+	Timer countUpTimer;
+	 int timeCountsUp = 0;
+	
+	
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -38,6 +46,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 				TestTimerExample inst = new TestTimerExample();
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
+				
 			}
 		});
 	}
@@ -51,6 +60,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
+		    countUpTimer = new Timer(1000, new CountUpTimerListener());
 			{
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
@@ -58,8 +68,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jButtonStartTime.setBounds(56, 188, 86, 23);
 				jButtonStartTime.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						System.out.println("jButtonStartTime.actionPerformed, event="+evt);
-						//TODO add your code for jButtonStartTime.actionPerformed
+						countUpTimer.start();	
 					}
 				});
 			}
@@ -69,9 +78,8 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jButtonStopTime.setText("Stop");
 				jButtonStopTime.setBounds(222, 188, 85, 23);
 				jButtonStopTime.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						System.out.println("jButtonStopTime.actionPerformed, event="+evt);
-						//TODO add your code for jButtonStopTime.actionPerformed
+					public void actionPerformed(ActionEvent evt) {				
+						countUpTimer.stop();	
 					}
 				});
 			}
@@ -91,7 +99,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jLabelSeconds = new JLabel();
 				getContentPane().add(jLabelSeconds);
 				jLabelSeconds.setText("sec");
-				jLabelSeconds.setBounds(237, 68, 20, 15);
+				jLabelSeconds.setBounds(237, 68, 38, 15);
 			}
 			{
 				jLabelSecondDigits = new JLabel();
@@ -107,5 +115,12 @@ public class TestTimerExample extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	class CountUpTimerListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
+			timeCountsUp++;
+		}
+	}	
 
 }
