@@ -27,6 +27,7 @@ import javax.swing.SwingUtilities;
 public class TestTimerExample extends javax.swing.JFrame {
 	private JButton jButtonStartTime;
 	private JButton jButtonStopTime;
+	private JButton jButtonResetTime;
 	private JLabel jLabelSecondDigits;
 	private JLabel jLabelSeconds;
 	private JLabel jLabelMinutes;
@@ -65,24 +66,23 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
 				jButtonStartTime.setText("Start");
-				jButtonStartTime.setBounds(56, 188, 86, 23);
-				jButtonStartTime.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						countUpTimer.start();	
-					}
-				});
+				jButtonStartTime.setBounds(48, 188, 86, 23);
+				jButtonStartTime.addActionListener(new StartButtonListener());
 			}
 			{
 				jButtonStopTime = new JButton();
 				getContentPane().add(jButtonStopTime);
 				jButtonStopTime.setText("Stop");
-				jButtonStopTime.setBounds(222, 188, 85, 23);
-				jButtonStopTime.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {				
-						countUpTimer.stop();	
-					}
-				});
+				jButtonStopTime.setBounds(156, 188, 85, 23);
+				jButtonStopTime.addActionListener(new StopButtonListener());
 			}
+			{
+				jButtonResetTime = new JButton();
+				getContentPane().add(jButtonResetTime);
+				jButtonResetTime.setText("Reset");
+				jButtonResetTime.setBounds(265, 188, 85, 23);
+				jButtonResetTime.addActionListener(new ResetButtonListener());
+			}			
 			{
 				jLabelMinuteDigits = new JLabel("", JLabel.RIGHT);
 				getContentPane().add(jLabelMinuteDigits);
@@ -108,6 +108,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jLabelSecondDigits.setHorizontalAlignment(JLabel.RIGHT);
 				jLabelSecondDigits.setBounds(201, 68, 20, 15);
 			}
+
 			pack();
 			setSize(400, 300);
 		} catch (Exception e) {
@@ -122,5 +123,26 @@ public class TestTimerExample extends javax.swing.JFrame {
 			timeCountsUp++;
 		}
 	}	
+	
+	class StartButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent evt) {
+			countUpTimer.start();	
+		}
+	}	
+	
+	class StopButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent evt) {				
+			countUpTimer.stop();	
+		}
+	}		
+	
+	class ResetButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent evt) {				
+			countUpTimer.stop();	
+			timeCountsUp = 0;
+			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
+			jLabelMinuteDigits.setText(String.valueOf(timeCountsUp));			
+		}
+	}			
 
 }
