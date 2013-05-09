@@ -34,7 +34,9 @@ public class TestTimerExample extends javax.swing.JFrame {
 	private JLabel jLabelMinuteDigits;
 	
 	Timer countUpTimer;
-	 int timeCountsUp = 0;
+	int timeCountsUp = 0;
+	int minCountsUp = 0;
+	 
 	
 	
 
@@ -62,6 +64,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
 		    countUpTimer = new Timer(1000, new CountUpTimerListener());
+		    int sizeOfCounter = 32;
 			{
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
@@ -87,26 +90,30 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jLabelMinuteDigits = new JLabel("", JLabel.RIGHT);
 				getContentPane().add(jLabelMinuteDigits);
 				jLabelMinuteDigits.setText("0");
-				jLabelMinuteDigits.setBounds(122, 66, 20, 15);
+				jLabelMinuteDigits.setBounds(103, 53, 21, 30);
+				jLabelMinuteDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
 				jLabelMinutes = new JLabel();
 				getContentPane().add(jLabelMinutes);
 				jLabelMinutes.setText("min");
-				jLabelMinutes.setBounds(158, 66, 37, 15);
+				jLabelMinutes.setBounds(139, 58, 49, 21);
+				jLabelMinutes.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
 				jLabelSeconds = new JLabel();
 				getContentPane().add(jLabelSeconds);
 				jLabelSeconds.setText("sec");
-				jLabelSeconds.setBounds(237, 68, 38, 15);
+				jLabelSeconds.setBounds(252, 58, 65, 23);
+				jLabelSeconds.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
 				jLabelSecondDigits = new JLabel();
 				getContentPane().add(jLabelSecondDigits);
 				jLabelSecondDigits.setText("0");
 				jLabelSecondDigits.setHorizontalAlignment(JLabel.RIGHT);
-				jLabelSecondDigits.setBounds(201, 68, 20, 15);
+				jLabelSecondDigits.setBounds(194, 55, 47, 29);
+				jLabelSecondDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 
 			pack();
@@ -119,8 +126,16 @@ public class TestTimerExample extends javax.swing.JFrame {
 	
 	class CountUpTimerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if (timeCountsUp == 59) {
+				timeCountsUp = 0;
+				minCountsUp++;
+			}
+			else
+			{
+				timeCountsUp++;	
+			}
 			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
-			timeCountsUp++;
+			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));
 		}
 	}	
 	
@@ -140,8 +155,9 @@ public class TestTimerExample extends javax.swing.JFrame {
 		public void actionPerformed(ActionEvent evt) {				
 			countUpTimer.stop();	
 			timeCountsUp = 0;
+			minCountsUp = 0;
 			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
-			jLabelMinuteDigits.setText(String.valueOf(timeCountsUp));			
+			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));			
 		}
 	}			
 
