@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
@@ -36,9 +37,8 @@ public class TestTimerExample extends javax.swing.JFrame {
 	Timer countUpTimer;
 	int timeCountsUp = 0;
 	int minCountsUp = 0;
-	 
-	
-	
+	private JTextField jTextFieldTimeInMilliseconds;
+	private JLabel jLabelCountInMilliseconds;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -115,6 +115,18 @@ public class TestTimerExample extends javax.swing.JFrame {
 				jLabelSecondDigits.setBounds(194, 55, 47, 29);
 				jLabelSecondDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
+			{
+				jLabelCountInMilliseconds = new JLabel();
+				getContentPane().add(jLabelCountInMilliseconds);
+				jLabelCountInMilliseconds.setText("Milliseconds:");
+				jLabelCountInMilliseconds.setBounds(48, 132, 76, 16);
+			}
+			{
+				jTextFieldTimeInMilliseconds = new JTextField();
+				getContentPane().add(jTextFieldTimeInMilliseconds);
+				jTextFieldTimeInMilliseconds.setText("1000");
+				jTextFieldTimeInMilliseconds.setBounds(124, 129, 40, 23);
+			}
 
 			pack();
 			setSize(400, 300);
@@ -141,6 +153,7 @@ public class TestTimerExample extends javax.swing.JFrame {
 	
 	class StartButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
+			countUpTimer = new Timer(new Integer(jTextFieldTimeInMilliseconds.getText()).intValue(), new CountUpTimerListener());
 			countUpTimer.start();	
 		}
 	}	
@@ -157,7 +170,8 @@ public class TestTimerExample extends javax.swing.JFrame {
 			timeCountsUp = 0;
 			minCountsUp = 0;
 			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
-			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));			
+			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));	
+			jTextFieldTimeInMilliseconds.setText("1000");			
 		}
 	}			
 
