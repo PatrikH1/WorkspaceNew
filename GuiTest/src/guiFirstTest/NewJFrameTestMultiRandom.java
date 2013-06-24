@@ -114,19 +114,22 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			int startResultY1 = 34;
 			
 			// JLabel coordinates
-			int labelX1 = 10;
+			// int labelX1 = 10;
+			int labelX1 = 40;
 			int labelY1 = startLabelY1;
 			int labelX2 = 66;
 			int labelY2 = 16;
 			
 			// JTextField coordinates
-			int textFieldX1 = 76;
+			// int textFieldX1 = 76;
+			int textFieldX1 = 106;
 			int textFieldY1 = startTextFieldY1;
 			int textFieldX2 = 62;
 			int textFieldY2 = 22;	
 			
 			// jLabelResult
-			int resultX1 = 142;
+			//int resultX1 = 142;
+			int resultX1 = 172;
 			int resultY1 = startResultY1;
 			int resultX2 = 31;
 			int resultY2 = 10;			
@@ -252,7 +255,8 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			jLabelOkOrError.setFont(new java.awt.Font("Times New Roman",0,48));
 			
 			pack();
-			this.setSize(650, 580);
+			//this.setSize(650, 580);
+			this.setSize(700, 580);
 		} 
 		catch (Exception e) 
 		{
