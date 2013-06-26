@@ -21,6 +21,7 @@ import guiFirstTest.RandomNumbers;
 import guiFirstTest.GenerateDivision;
 import guiFirstTest.Coordinates;
 import guiFirstTest.MultiLabelTextField;
+import guiFirstTest.TestTimerExample.StartButtonListener;
 
 /**
 *  This class displays a window where you can write answers to the multiplication table.
@@ -40,6 +41,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private JButton jButtonReset;
 	private JButton jButtonCheck;	
 	private JButton jButtonNewNumbers;
+	private JButton jButtonStartTime;
 	
 	// Radio buttons.
 	private JRadioButton jRadioMultiButton;	
@@ -115,21 +117,21 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			
 			// JLabel coordinates
 			// int labelX1 = 10;
-			int labelX1 = 40;
+			int labelX1 = 75;
 			int labelY1 = startLabelY1;
 			int labelX2 = 66;
 			int labelY2 = 16;
 			
 			// JTextField coordinates
 			// int textFieldX1 = 76;
-			int textFieldX1 = 106;
+			int textFieldX1 = 141;
 			int textFieldY1 = startTextFieldY1;
 			int textFieldX2 = 62;
 			int textFieldY2 = 22;	
 			
 			// jLabelResult
 			//int resultX1 = 142;
-			int resultX1 = 172;
+			int resultX1 = 207;
 			int resultY1 = startResultY1;
 			int resultX2 = 31;
 			int resultY2 = 10;			
@@ -226,7 +228,14 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 						jButtonNewNumbersActionPerformed(evt);
 					}
 				});
-			}	
+			}
+			
+			// The start time button is added.
+			jButtonStartTime = new JButton();
+			getContentPane().add(jButtonStartTime);
+			jButtonStartTime.setText("Start");
+			jButtonStartTime.setBounds(10, 32, 67, 23);
+			// jButtonStartTime.addActionListener(new StartButtonListener());			
 			
 			// Radio button for multi.
 			jRadioMultiButton = new JRadioButton();
@@ -256,7 +265,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			
 			pack();
 			//this.setSize(650, 580);
-			this.setSize(700, 580);
+			this.setSize(700, 550);
 		} 
 		catch (Exception e) 
 		{
