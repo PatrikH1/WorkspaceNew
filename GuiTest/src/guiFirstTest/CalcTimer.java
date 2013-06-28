@@ -1,12 +1,9 @@
 package guiFirstTest;
-import guiFirstTest.TimerExample.CountUpTimerListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 import javax.swing.WindowConstants;
@@ -28,8 +25,6 @@ public class CalcTimer extends javax.swing.JFrame {
 	Timer countUpTimer;
 	int timeCountsUp = 0;
 	int minCountsUp = 0;
-	private JTextField jTextFieldTimeInMilliseconds;
-	private JLabel jLabelCountInMilliseconds;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -59,22 +54,22 @@ public class CalcTimer extends javax.swing.JFrame {
 			{
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
-				jButtonStartTime.setText("Start");
-				jButtonStartTime.setBounds(48, 188, 86, 23);
+				jButtonStartTime.setText("<html><center>Start<br/>Time</center></html>");
+				jButtonStartTime.setBounds(48, 188, 83, 50);
 				jButtonStartTime.addActionListener(new StartButtonListener());
 			}
 			{
 				jButtonStopTime = new JButton();
 				getContentPane().add(jButtonStopTime);
-				jButtonStopTime.setText("Stop");
-				jButtonStopTime.setBounds(156, 188, 85, 23);
+				jButtonStopTime.setText("<html><center>Stop<br/>Time</center></html>");
+				jButtonStopTime.setBounds(156, 188, 85, 50);
 				jButtonStopTime.addActionListener(new StopButtonListener());
 			}
 			{
 				jButtonResetTime = new JButton();
 				getContentPane().add(jButtonResetTime);
-				jButtonResetTime.setText("Reset");
-				jButtonResetTime.setBounds(265, 188, 85, 23);
+				jButtonResetTime.setText("<html><center>Reset<br/>Time</center></html>");
+				jButtonResetTime.setBounds(265, 188, 85, 50);
 				jButtonResetTime.addActionListener(new ResetButtonListener());
 			}			
 			{
@@ -106,18 +101,6 @@ public class CalcTimer extends javax.swing.JFrame {
 				jLabelSecondDigits.setBounds(194, 55, 47, 29);
 				jLabelSecondDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
-			{
-				jLabelCountInMilliseconds = new JLabel();
-				getContentPane().add(jLabelCountInMilliseconds);
-				jLabelCountInMilliseconds.setText("Milliseconds:");
-				jLabelCountInMilliseconds.setBounds(48, 132, 76, 16);
-			}
-			{
-				jTextFieldTimeInMilliseconds = new JTextField();
-				getContentPane().add(jTextFieldTimeInMilliseconds);
-				jTextFieldTimeInMilliseconds.setText("1000");
-				jTextFieldTimeInMilliseconds.setBounds(124, 129, 40, 23);
-			}
 
 			pack();
 			setSize(400, 300);
@@ -144,7 +127,7 @@ public class CalcTimer extends javax.swing.JFrame {
 	
 	class StartButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
-			countUpTimer = new Timer(new Integer(jTextFieldTimeInMilliseconds.getText()).intValue(), new CountUpTimerListener());
+			countUpTimer = new Timer(1000, new CountUpTimerListener());
 			countUpTimer.start();	
 		}
 	}	
@@ -161,8 +144,7 @@ public class CalcTimer extends javax.swing.JFrame {
 			timeCountsUp = 0;
 			minCountsUp = 0;
 			jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
-			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));	
-			jTextFieldTimeInMilliseconds.setText("1000");			
+			jLabelMinuteDigits.setText(String.valueOf(minCountsUp));		
 		}
 	}			
 
