@@ -55,7 +55,7 @@ public class CalcTimer extends javax.swing.JFrame {
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
 				jButtonStartTime.setText("<html><center>Start<br/>Time</center></html>");
-				jButtonStartTime.setBounds(48, 188, 83, 50);
+				jButtonStartTime.setBounds(48, 188, 85, 50);
 				jButtonStartTime.addActionListener(new StartButtonListener());
 			}
 			{
@@ -87,20 +87,21 @@ public class CalcTimer extends javax.swing.JFrame {
 				jLabelMinutes.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
-				jLabelSeconds = new JLabel();
-				getContentPane().add(jLabelSeconds);
-				jLabelSeconds.setText("sec");
-				jLabelSeconds.setBounds(252, 58, 65, 23);
-				jLabelSeconds.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
-			}
-			{
 				jLabelSecondDigits = new JLabel();
 				getContentPane().add(jLabelSecondDigits);
 				jLabelSecondDigits.setText("0");
 				jLabelSecondDigits.setHorizontalAlignment(JLabel.RIGHT);
-				jLabelSecondDigits.setBounds(194, 55, 47, 29);
+				jLabelSecondDigits.setBounds(194, 53, 43, 30);
 				jLabelSecondDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
+			}			
+			{
+				jLabelSeconds = new JLabel();
+				getContentPane().add(jLabelSeconds);
+				jLabelSeconds.setText("sec");
+				jLabelSeconds.setBounds(252, 58, 49, 21);
+				jLabelSeconds.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
+
 
 			pack();
 			setSize(400, 300);
