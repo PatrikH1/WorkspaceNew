@@ -9,6 +9,9 @@ import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+// Imports from this package
+import guiFirstTest.Coordinates;
+
 
 /**
 
@@ -22,6 +25,11 @@ public class CalcTimer extends javax.swing.JFrame {
 	private JLabel jLabelMinutes;
 	private JLabel jLabelMinuteDigits;
 	
+	// Coordinates
+	private Coordinates coordStartButton;
+	private Coordinates coordStopButton;
+	private Coordinates coordResetButton;			
+	
 	Timer countUpTimer;
 	int timeCountsUp = 0;
 	int minCountsUp = 0;
@@ -32,7 +40,9 @@ public class CalcTimer extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				CalcTimer inst = new CalcTimer();
+				CalcTimer inst = new CalcTimer(new Coordinates(48, 188, 85, 50),
+						new Coordinates(156, 188, 85, 50),
+						new Coordinates(265, 188, 85, 50));
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 				
@@ -40,8 +50,13 @@ public class CalcTimer extends javax.swing.JFrame {
 		});
 	}
 	
-	public CalcTimer() {
+	public CalcTimer(Coordinates coordStartButton,
+			Coordinates coordStopButton,
+			Coordinates coordResetButton) {
 		super();
+		this.coordStartButton = coordStartButton;
+		this.coordStopButton = coordStopButton;
+		this.coordResetButton = coordResetButton;
 		initGUI();
 	}
 	
@@ -55,21 +70,33 @@ public class CalcTimer extends javax.swing.JFrame {
 				jButtonStartTime = new JButton();
 				getContentPane().add(jButtonStartTime);
 				jButtonStartTime.setText("<html><center>Start<br/>Time</center></html>");
-				jButtonStartTime.setBounds(48, 188, 85, 50);
+				// jButtonStartTime.setBounds(48, 188, 85, 50);
+				jButtonStartTime.setBounds(coordStartButton.getX1(), 
+						coordStartButton.getY1(), 
+						coordStartButton.getX2(), 
+						coordStartButton.getY2());
 				jButtonStartTime.addActionListener(new StartButtonListener());
 			}
 			{
 				jButtonStopTime = new JButton();
 				getContentPane().add(jButtonStopTime);
 				jButtonStopTime.setText("<html><center>Stop<br/>Time</center></html>");
-				jButtonStopTime.setBounds(156, 188, 85, 50);
+				// jButtonStopTime.setBounds(156, 188, 85, 50);
+				jButtonStopTime.setBounds(coordStopButton.getX1(), 
+						coordStopButton.getY1(), 
+						coordStopButton.getX2(), 
+						coordStopButton.getY2());
 				jButtonStopTime.addActionListener(new StopButtonListener());
 			}
 			{
 				jButtonResetTime = new JButton();
 				getContentPane().add(jButtonResetTime);
 				jButtonResetTime.setText("<html><center>Reset<br/>Time</center></html>");
-				jButtonResetTime.setBounds(265, 188, 85, 50);
+				// jButtonResetTime.setBounds(265, 188, 85, 50);
+				jButtonResetTime.setBounds(coordResetButton.getX1(), 
+						coordResetButton.getY1(), 
+						coordResetButton.getX2(), 
+						coordResetButton.getY2());
 				jButtonResetTime.addActionListener(new ResetButtonListener());
 			}			
 			{

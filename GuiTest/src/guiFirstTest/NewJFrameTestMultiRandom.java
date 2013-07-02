@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JFrame;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
@@ -21,7 +20,6 @@ import guiFirstTest.RandomNumbers;
 import guiFirstTest.GenerateDivision;
 import guiFirstTest.Coordinates;
 import guiFirstTest.MultiLabelTextField;
-import guiFirstTest.TestTimerExample.StartButtonListener;
 
 /**
 *  This class displays a window where you can write answers to the multiplication table.
