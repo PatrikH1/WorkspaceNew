@@ -12,6 +12,9 @@ import javax.swing.SwingUtilities;
 // Imports from this package
 import guiFirstTest.Coordinates;
 
+// JFrame
+import javax.swing.JFrame;
+
 
 /**
 
@@ -43,10 +46,12 @@ public class CalcTimer extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				CalcTimer inst = new CalcTimer(new Coordinates(48, 188, 85, 50),
-						new Coordinates(156, 188, 85, 50),
-						new Coordinates(265, 188, 85, 50),
-						90, 100);
+				//CalcTimer inst = new CalcTimer(new Coordinates(48, 188, 85, 50),
+				//		new Coordinates(156, 188, 85, 50),
+				//		new Coordinates(265, 188, 85, 50),
+				//		90, 100);
+				CalcTimer inst = new CalcTimer();
+				inst.initGUI(inst);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
 				
@@ -58,24 +63,32 @@ public class CalcTimer extends javax.swing.JFrame {
 			Coordinates coordStopButton,
 			Coordinates coordResetButton,
 			int startX, int startY) {
-		super();
+		super(); 
 		this.coordStartButton = coordStartButton;
 		this.coordStopButton = coordStopButton;
 		this.coordResetButton = coordResetButton;
 		this.startX = startX;
 		this.startY = startY;
-		initGUI();
 	}
 	
-	private void initGUI() {
+	public CalcTimer() {
+		super();
+		this.coordStartButton = new Coordinates(48, 188, 85, 50);
+		this.coordStopButton = new Coordinates(156, 188, 85, 50);
+		this.coordResetButton = new Coordinates(265, 188, 85, 50);
+		this.startX = 90;
+		this.startY = 100;
+	}	
+	
+	private void initGUI(JFrame jFrameToUse) {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			getContentPane().setLayout(null);
+			jFrameToUse.getContentPane().setLayout(null);
 		    countUpTimer = new Timer(1000, new CountUpTimerListener());
 		    int sizeOfCounter = 32;
 			{
 				jButtonStartTime = new JButton();
-				getContentPane().add(jButtonStartTime);
+				jFrameToUse.getContentPane().add(jButtonStartTime);
 				jButtonStartTime.setText("<html><center>Start<br/>Time</center></html>");
 				jButtonStartTime.setBounds(coordStartButton.getX1(), 
 						coordStartButton.getY1(), 
@@ -85,7 +98,7 @@ public class CalcTimer extends javax.swing.JFrame {
 			}
 			{
 				jButtonStopTime = new JButton();
-				getContentPane().add(jButtonStopTime);
+				jFrameToUse.getContentPane().add(jButtonStopTime);
 				jButtonStopTime.setText("<html><center>Stop<br/>Time</center></html>");
 				jButtonStopTime.setBounds(coordStopButton.getX1(), 
 						coordStopButton.getY1(), 
@@ -95,7 +108,7 @@ public class CalcTimer extends javax.swing.JFrame {
 			}
 			{
 				jButtonResetTime = new JButton();
-				getContentPane().add(jButtonResetTime);
+				jFrameToUse.getContentPane().add(jButtonResetTime);
 				jButtonResetTime.setText("<html><center>Reset<br/>Time</center></html>");
 				jButtonResetTime.setBounds(coordResetButton.getX1(), 
 						coordResetButton.getY1(), 
@@ -105,21 +118,21 @@ public class CalcTimer extends javax.swing.JFrame {
 			}			
 			{
 				jLabelMinuteDigits = new JLabel("", JLabel.RIGHT);
-				getContentPane().add(jLabelMinuteDigits);
+				jFrameToUse.getContentPane().add(jLabelMinuteDigits);
 				jLabelMinuteDigits.setText("0");
 				jLabelMinuteDigits.setBounds(startX, startY, 21, 30);
 				jLabelMinuteDigits.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
 				jLabelMinutes = new JLabel();
-				getContentPane().add(jLabelMinutes);
+				jFrameToUse.getContentPane().add(jLabelMinutes);
 				jLabelMinutes.setText("min");
 				jLabelMinutes.setBounds(startX + 36, startY + 5, 49, 21);
 				jLabelMinutes.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
 			}
 			{
 				jLabelSecondDigits = new JLabel();
-				getContentPane().add(jLabelSecondDigits);
+				jFrameToUse.getContentPane().add(jLabelSecondDigits);
 				jLabelSecondDigits.setText("0");
 				jLabelSecondDigits.setHorizontalAlignment(JLabel.RIGHT);
 				jLabelSecondDigits.setBounds(startX + 91, startY, 43, 30);
@@ -127,7 +140,7 @@ public class CalcTimer extends javax.swing.JFrame {
 			}			
 			{
 				jLabelSeconds = new JLabel();
-				getContentPane().add(jLabelSeconds);
+				jFrameToUse.getContentPane().add(jLabelSeconds);
 				jLabelSeconds.setText("sec");
 				jLabelSeconds.setBounds(startX + 149, startY + 5, 49, 21);
 				jLabelSeconds.setFont(new java.awt.Font("Times New Roman",0,sizeOfCounter));
