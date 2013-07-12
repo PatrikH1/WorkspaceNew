@@ -33,7 +33,10 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private boolean errorFound;
 	
     //  Vector containing name and inputfield of all numbers to calculate.
-	private Vector<MultiLabelTextField> multiTextsAndFileldsVec;  
+	private Vector<MultiLabelTextField> multiTextsAndFileldsVec; 
+	
+	// Timer
+	private CalcTimer calcTimer;
 	
 	// Buttons
 	private JButton jButtonReset;
@@ -227,6 +230,13 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 					}
 				});
 			}
+			
+			// Timer class
+			calcTimer = new CalcTimer(new Coordinates(10, 32, 85, 50),
+					new Coordinates(10, 102, 85, 50),
+					new Coordinates(10, 172, 85, 50),
+					60, 460);
+			calcTimer.initGUI(this);
 			
 			// The start time button is added.
 			jButtonStartTime = new JButton();

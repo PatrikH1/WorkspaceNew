@@ -15,6 +15,9 @@ import guiFirstTest.Coordinates;
 // JFrame
 import javax.swing.JFrame;
 
+// CalcTimer
+import guiFirstTest.CalcTimer;
+
 
 /**
 
@@ -80,7 +83,7 @@ public class CalcTimer extends javax.swing.JFrame {
 		this.startY = 100;
 	}	
 	
-	private void initGUI(JFrame jFrameToUse) {
+	public void initGUI(JFrame jFrameToUse) {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			jFrameToUse.getContentPane().setLayout(null);
