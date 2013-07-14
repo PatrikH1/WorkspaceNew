@@ -232,19 +232,12 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			}
 			
 			// Timer class
-			calcTimer = new CalcTimer(new Coordinates(10, 32, 85, 50),
-					new Coordinates(10, 102, 85, 50),
-					new Coordinates(10, 172, 85, 50),
+			calcTimer = new CalcTimer(new Coordinates(10, 32, 70, 50),
+					new Coordinates(580, 370, 70, 50),
+					new Coordinates(580, 430, 70, 50),
 					60, 460);
 			calcTimer.initGUI(this);
-			
-			// The start time button is added.
-			jButtonStartTime = new JButton();
-			getContentPane().add(jButtonStartTime);
-			jButtonStartTime.setText("Start");
-			jButtonStartTime.setBounds(10, 32, 67, 23);
-			// jButtonStartTime.addActionListener(new StartButtonListener());			
-			
+						
 			// Radio button for multi.
 			jRadioMultiButton = new JRadioButton();
 			getContentPane().add(jRadioMultiButton);
@@ -268,11 +261,10 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 			jLabelOkOrError = new JLabel();
 			getContentPane().add(jLabelOkOrError);
 			jLabelOkOrError.setText("");
-			jLabelOkOrError.setBounds(470, 365, 121, 92);
+			jLabelOkOrError.setBounds(455, 365, 121, 92);
 			jLabelOkOrError.setFont(new java.awt.Font("Times New Roman",0,48));
 			
 			pack();
-			//this.setSize(650, 580);
 			this.setSize(700, 550);
 		} 
 		catch (Exception e) 

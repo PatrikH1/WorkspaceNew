@@ -62,6 +62,15 @@ public class CalcTimer extends javax.swing.JFrame {
 		});
 	}
 	
+	/**
+	 * Constructor for CalcTimer.
+	 * 
+	 * @param coordStartButton Coordinates for start button.
+	 * @param coordStopButton Coordinates for stop button.
+	 * @param coordResetButton Coordinates for reset button.
+	 * @param startX x-coordinate for timer part.
+	 * @param startY y-coordinate for timer part.
+	 */
 	public CalcTimer(Coordinates coordStartButton,
 			Coordinates coordStopButton,
 			Coordinates coordResetButton,
