@@ -11,8 +11,7 @@ public class FirstTestHui {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello Hui!");
+		System.out.println("Hello Hui Hui1!");
 
 	}
-
 }
