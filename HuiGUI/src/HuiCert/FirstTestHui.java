@@ -11,7 +11,8 @@ public class FirstTestHui {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello Hui Hui1!");
+		System.out.println("Hello Jonas! How are you?");
+		System.out.println("This is vey funny, isn´t it?");
 
 	}
 }

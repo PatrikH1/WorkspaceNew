@@ -307,6 +307,7 @@ public class NewJFrameTestMultiRandom extends javax.swing.JFrame {
 	private void jButtonResetActionPerformed(ActionEvent evt) 
 	{
 		resetAllValues();
+		calcTimer.resetTimer();
 	}
 	
 	/**

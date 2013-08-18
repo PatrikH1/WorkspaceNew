@@ -166,6 +166,14 @@ public class CalcTimer extends javax.swing.JFrame {
 		}
 	}
 	
+	public void resetTimer() {
+		countUpTimer.stop();	
+		timeCountsUp = 0;
+		minCountsUp = 0;
+		jLabelSecondDigits.setText(String.valueOf(timeCountsUp));
+		jLabelMinuteDigits.setText(String.valueOf(minCountsUp));				
+	}
+	
 	class CountUpTimerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (timeCountsUp == 59) {
