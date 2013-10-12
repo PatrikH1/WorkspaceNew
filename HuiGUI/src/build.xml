@@ -1,0 +1,67 @@
+<project name="crs471" default="compile" basedir=".">
+
+	<property name="docs.home" value="docs"/>
+	
+	<!-- 
+		The "compile" target is used to compile (or recompile) 
+		the Java classes that make up this application.  
+	-->
+	<target name="compile" description="Compile the files">
+		<javac srcdir="." deprecation="on" includeantruntime="false" />
+	</target>
+
+
+	<!-- 
+		The "clean" target removes the class files, so that the 
+		next time the "compile" target is requested, it will 
+		need to compile everything from scratch.
+	-->	
+	<target name="clean" description="Remove the class files">
+		<delete quiet="true">
+			<fileset dir="." includes="*.class"/>
+		</delete>	
+	</target>
+
+
+	<!-- 
+		The "all" target executes clean then compile
+	-->
+	<target name="all" depends="clean,compile" description="Performs all tasks: clean and compile" />
+
+
+	<!-- Read in the 'build.properties' file -->
+	<property file="build.properties"/>
+
+	<!--
+	    Create the JavaDoc...read data from above props file
+	-->
+	<target name="javadoc" depends="javadoc-setup" description="Creates JavaDoc">
+		<echo message="Generating JavaDoc for ${exercise.title}"/>
+		
+		
+		<!-- Run javadoc -->
+		<javadoc sourcepath="."
+				 destdir="${docs.home}"
+				 windowtitle="${exercise.title}"
+				 nohelp="true"
+				 author="true"
+				 version="true"
+				 use="true"
+				 private="true"
+				 link="file:///c:/jdk/docs/api">
+				 
+		</javadoc>
+		
+		
+	</target>
+
+	<target name="javadoc-setup" description="Setup for JavaDoc">
+		<mkdir dir="${docs.home}" />
+		
+		<delete>
+			<fileset dir="${docs.home}" includes="**/*.html" />
+			<fileset dir="${docs.home}" includes="**/*.css" />
+		</delete>
+	</target>
+	
+</project>
