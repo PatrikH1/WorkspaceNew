@@ -10,6 +10,19 @@ import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 /**
 * Class to be used for chosen which type of calculation
 * window to use.
@@ -26,9 +39,13 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 	private JRadioButton jRadioButtonTable6;
 	private JRadioButton jRadioButtonTable7;
 	private JRadioButton jRadioButtonTable8;
+	private JRadioButton jRadioButtonTable12;
+	private JRadioButton jRadioButtonTable11;
 	private JRadioButton jRadioButtonRandom;
 	private JRadioButton jRadioButtonTable9;
 	private JRadioButton jRadioButtonTable10;
+
+	
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -70,7 +87,7 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable6 = new JRadioButton();
 				getContentPane().add(jRadioButtonTable6);
 				jRadioButtonTable6.setText("6");
-				jRadioButtonTable6.setBounds(102, 61, 43, 20);
+				jRadioButtonTable6.setBounds(42, 210, 43, 20);
 				jRadioButtonTable6.setSelected(true);
 			}			
 			{
@@ -83,7 +100,7 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable7 = new JRadioButton();
 				getContentPane().add(jRadioButtonTable7);
 				jRadioButtonTable7.setText("7");
-				jRadioButtonTable7.setBounds(102, 90, 43, 20);
+				jRadioButtonTable7.setBounds(102, 62, 43, 20);
 			}			
 			{
 				jRadioButtonTable3 = new JRadioButton();
@@ -95,7 +112,7 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable8 = new JRadioButton();
 				getContentPane().add(jRadioButtonTable8);
 				jRadioButtonTable8.setText("8");
-				jRadioButtonTable8.setBounds(102, 119, 43, 20);
+				jRadioButtonTable8.setBounds(102, 91, 43, 20);
 			}			
 			{
 				jRadioButtonTable4 = new JRadioButton();
@@ -107,7 +124,7 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable9 = new JRadioButton();
 				getContentPane().add(jRadioButtonTable9);
 				jRadioButtonTable9.setText("9");
-				jRadioButtonTable9.setBounds(102, 148, 43, 20);
+				jRadioButtonTable9.setBounds(102, 120, 43, 20);
 			}				
 			{
 				jRadioButtonTable5 = new JRadioButton();
@@ -119,13 +136,13 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable10 = new JRadioButton();
 				getContentPane().add(jRadioButtonTable10);
 				jRadioButtonTable10.setText("10");
-				jRadioButtonTable10.setBounds(102, 177, 43, 20);
+				jRadioButtonTable10.setBounds(102, 149, 43, 20);
 			}	
 			{
 				jRadioButtonRandom = new JRadioButton();
 				getContentPane().add(jRadioButtonRandom);
 				jRadioButtonRandom.setText("Random");
-				jRadioButtonRandom.setBounds(42, 211, 92, 20);
+				jRadioButtonRandom.setBounds(42, 245, 92, 20);
 			}			
 			{
 				ButtonGroup buttonGroup = getButtonGroupTable();
@@ -138,7 +155,9 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				buttonGroup.add(jRadioButtonTable7);
 				buttonGroup.add(jRadioButtonTable8);
 				buttonGroup.add(jRadioButtonTable9);
-				buttonGroup.add(jRadioButtonTable10);		
+				buttonGroup.add(jRadioButtonTable10);	
+				buttonGroup.add(jRadioButtonTable11);
+				buttonGroup.add(jRadioButtonTable12);						
 				buttonGroup.add(jRadioButtonRandom);
 			}
 			{
@@ -147,9 +166,21 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jLabelWhichTable.setText("Choose your table");
 				jLabelWhichTable.setBounds(37, 27, 148, 30);
 			}
+			{
+				jRadioButtonTable11 = new JRadioButton();
+				getContentPane().add(jRadioButtonTable11);
+				jRadioButtonTable11.setText("11");
+				jRadioButtonTable11.setBounds(102, 178, 43, 20);
+			}
+			{
+				jRadioButtonTable12 = new JRadioButton();
+				getContentPane().add(jRadioButtonTable12);
+				jRadioButtonTable12.setText("12");
+				jRadioButtonTable12.setBounds(102, 210, 43, 20);
+			}
 
 			pack();
-			this.setSize(383, 294);
+			this.setSize(497, 342);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
