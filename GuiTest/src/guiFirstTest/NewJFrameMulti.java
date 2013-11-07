@@ -139,6 +139,19 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jRadioButtonTable10.setBounds(102, 149, 43, 20);
 			}	
 			{
+				jRadioButtonTable11 = new JRadioButton();
+				getContentPane().add(jRadioButtonTable11);
+				jRadioButtonTable11.setText("11");
+				jRadioButtonTable11.setBounds(102, 178, 43, 20);
+			}
+			{
+				jRadioButtonTable12 = new JRadioButton();
+				getContentPane().add(jRadioButtonTable12);
+				jRadioButtonTable12.setText("12");
+				jRadioButtonTable12.setBounds(102, 210, 43, 20);
+			}			
+			
+			{
 				jRadioButtonRandom = new JRadioButton();
 				getContentPane().add(jRadioButtonRandom);
 				jRadioButtonRandom.setText("Random");
@@ -166,18 +179,7 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 				jLabelWhichTable.setText("Choose your table");
 				jLabelWhichTable.setBounds(37, 27, 148, 30);
 			}
-			{
-				jRadioButtonTable11 = new JRadioButton();
-				getContentPane().add(jRadioButtonTable11);
-				jRadioButtonTable11.setText("11");
-				jRadioButtonTable11.setBounds(102, 178, 43, 20);
-			}
-			{
-				jRadioButtonTable12 = new JRadioButton();
-				getContentPane().add(jRadioButtonTable12);
-				jRadioButtonTable12.setText("12");
-				jRadioButtonTable12.setBounds(102, 210, 43, 20);
-			}
+
 
 			pack();
 			this.setSize(497, 342);
@@ -249,6 +251,14 @@ public class NewJFrameMulti extends javax.swing.JFrame {
 					   {
 						   multiTableChosen = 10;
 					   }
+					   else if (jRadioButtonTable11.isSelected())
+					   {
+						   multiTableChosen = 11;
+					   }	
+					   else if (jRadioButtonTable12.isSelected())
+					   {
+						   multiTableChosen = 12;
+					   }					   					   
 					   else if (jRadioButtonRandom.isSelected())
 					   {
 						   randomChosen = true;
