@@ -2,7 +2,8 @@
  *  This file consists of the class RandomNumbers for
  *  generating random numbers.
  */
-package guiFirstTest;
+package gameph;
+
 import java.util.Random;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Random;
  *
  * Class to generate Random numbers.
  */
-public class RandomNumbers {
+public class RandomInt {
 	
 	private int maxNumber;
 	private Random generator;
@@ -18,7 +19,7 @@ public class RandomNumbers {
 	/**
 	 *  Constructor for class RandomNumbers.
 	 */
-	public RandomNumbers() {
+	public RandomInt() {
 		maxNumber = 10;
 		generator = new Random();
 	}
@@ -28,7 +29,7 @@ public class RandomNumbers {
 	 *  
 	 *  @args maxNumber The maximum random number
 	 */
-	public RandomNumbers(int maxNumber) {
+	public RandomInt(int maxNumber) {
 		this.maxNumber = maxNumber;
 		generator = new Random();
 	}
@@ -40,7 +41,7 @@ public class RandomNumbers {
 	 *  @args maxNumber The maximum random number
 	 */
 	public int getNextRandomInt() {
-		return generator.nextInt(maxNumber) + 1;
+		return generator.nextInt(maxNumber);
 	}
 	
 	/**
@@ -60,30 +61,15 @@ public class RandomNumbers {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		RandomNumbers generator = new RandomNumbers();
+		RandomInt generator = new RandomInt();
 
 		for (int i = 0; i < 20; i++) {
-			System.out.print(generator.getNextRandomInteger() + " ");
+			System.out.print(generator.getNextRandomInt() + " ");
 		}
 		System.out.println();
 		
-		
-//		for (int i = 0; i < 20; i++) {
-//			System.out.print(generator.getNextRandomInt() + " ");
-//		}
-//		System.out.println();
-//		for (int i = 0; i < 30; i++) {
-//			System.out.print(generator.getNextRandomInt() + " ");
-//		}
-//		System.out.println();
-//		for (int i = 0; i < 10; i++) {
-//			System.out.print(generator.getNextRandomInt() + " ");
-//		}
-//		System.out.println();
-//		for (int i = 0; i < 10; i++) {
-//			System.out.print(generator.getNextRandomInt() + " ");
-//		}
 		System.out.println();		
 
 	}
 }
+
