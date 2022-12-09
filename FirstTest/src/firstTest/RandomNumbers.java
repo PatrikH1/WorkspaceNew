@@ -35,6 +35,7 @@ public class RandomNumbers {
 
 	/**
 	 *  Constructor for class RandomNumbers.
+	 *
 	 *  
 	 *  @args maxNumber The maximum random number
 	 */
