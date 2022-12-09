@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ClientServer/ClientServer.iml" filepath="$PROJECT_DIR$/ClientServer/ClientServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FirstTest/FirstTest.iml" filepath="$PROJECT_DIR$/FirstTest/FirstTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GamePatrik/GamePatrik.iml" filepath="$PROJECT_DIR$/GamePatrik/GamePatrik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GuiTest/GuiTest.iml" filepath="$PROJECT_DIR$/GuiTest/GuiTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HelloHello/HelloHello.iml" filepath="$PROJECT_DIR$/HelloHello/HelloHello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HuiGUI/HuiGUI.iml" filepath="$PROJECT_DIR$/HuiGUI/HuiGUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/WorkspaceNew.iml" filepath="$PROJECT_DIR$/.idea/WorkspaceNew.iml" />
+    </modules>
+  </component>
+</project>
